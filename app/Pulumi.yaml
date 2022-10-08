@@ -1,0 +1,3 @@
+name: pdf-generator
+runtime: nodejs
+description: A Pulumi Application that uses AWS Serverless to Generate PDFs
