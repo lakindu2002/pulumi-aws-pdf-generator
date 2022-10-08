@@ -67,7 +67,7 @@ export const pdfProcessingLambda = new aws.lambda.CallbackFunction("pdfProcessin
       const s3 = new aws.sdk.S3({ region: "eu-central-1" });
       await s3.putObject({
         Bucket: pdfBucket.bucket.get(),
-        Key: pdfName,
+        Key: `pdf/${pdfName}`,
         Body: pdf,
         ContentType: "application/pdf",
       }).promise();
@@ -75,7 +75,7 @@ export const pdfProcessingLambda = new aws.lambda.CallbackFunction("pdfProcessin
       // generate signed url from s3 for public reads.
       const signedUrl = await s3.getSignedUrlPromise("getObject", {
         Bucket: pdfBucket.bucket.get(),
-        Key: pdfName,
+        Key: `pdf/${pdfName}`,
         Expires: 60 * 60 * 24 * 7, // 7 days
       });
 

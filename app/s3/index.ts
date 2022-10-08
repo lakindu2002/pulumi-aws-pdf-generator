@@ -26,13 +26,6 @@ export const pdfBucket = new aws.s3.Bucket("pdf-bucket-lak", {
                 Action: 's3:GetObject',
                 Resource: `arn:aws:s3:::pdf-bucket-lak/pdf/*`
             },
-            {
-                Sid: 'DenyPulicRead',
-                Effect: 'Deny',
-                Principal: '*',
-                Action: 's3:GetObject',
-                Resource: `arn:aws:s3:::pdf-bucket-lak/pdf/*`
-            }
         ],
     }),
 }, { provider });
